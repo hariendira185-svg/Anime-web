@@ -1,35 +1,154 @@
-# Anime Favorites Web Application
+📺 Anime Favorites Web App
+📌 Project Overview
 
-A Flask-based web application where users can discover new anime, view details, and manage their personal favorites list.
+This is a full-stack Anime Favorites Web Application built using Python Flask. The application allows users to explore anime, view details, and manage their personal favorite anime list.
 
-## Features
-- User Authentication (Register, Login, Logout)
-- View Anime List and Details
-- Search Anime by Title
-- Filter Anime by Genre
-- Add/Remove Anime to personal Favorites
-- User Dashboard
-- Dark Mode support
+🚀 Features
 
-## How to Run in VS Code
+🔐 User Authentication (Register/Login/Logout)
 
-1. **Open the project folder (`anime_favorites`) in VS Code.**
-2. **Create a virtual environment:**
-   - Open a new terminal in VS Code (`Terminal > New Terminal`)
-   - Run: `python -m venv venv`
-3. **Activate the virtual environment:**
-   - Windows: `venv\Scripts\activate`
-   - Linux/Mac: `source venv/bin/activate`
-4. **Install the dependencies:**
-   - Run: `pip install -r requirements.txt`
-5. **Initialize the database and seed data:**
-   - Run: `python seed.py`
-6. **Run the application:**
-   - Run: `python app.py`
-7. **Open in Browser:**
-   - Go to `http://127.0.0.1:5000/` to view the application!
+📚 Browse Anime List
 
-## Tech Stack
-- **Backend:** Python, Flask, SQLAlchemy, Flask-Login
-- **Frontend:** HTML, CSS, JavaScript
-- **Database:** SQLite
+🔍 Search Anime by Name
+
+📄 View Anime Details (title, genre, episodes, rating, description, image)
+
+❤️ Add/Remove Anime from Favorites
+
+📊 Personalized User Dashboard
+
+🎨 Responsive UI Design
+
+🛠️ Tech Stack
+
+Frontend: HTML, CSS, JavaScript, Bootstrap
+
+Backend: Python (Flask)
+
+Database: SQLite
+
+📁 Project Structure
+anime-site/
+│
+├── app.py
+├── database.db
+├── requirements.txt
+│
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── anime_detail.html
+│   └── favorites.html
+│
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── images/
+⚙️ Installation & Setup (Step-by-Step)
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/anime-site.git
+cd anime-site
+2️⃣ Create Virtual Environment
+python -m venv venv
+
+Activate it:
+
+Windows:
+
+venv\Scripts\activate
+
+Mac/Linux:
+
+source venv/bin/activate
+3️⃣ Install Dependencies
+pip install -r requirements.txt
+4️⃣ Run the Application
+python app.py
+5️⃣ Open in Browser
+
+Go to:
+
+http://127.0.0.1:5000/
+🗄️ Database Schema
+Users Table
+
+id
+
+username
+
+email
+
+password
+
+Anime Table
+
+id
+
+title
+
+genre
+
+episodes
+
+rating
+
+description
+
+image_url
+
+Favorites Table
+
+id
+
+user_id
+
+anime_id
+
+✨ How to Use
+
+Register a new account
+
+Login to your account
+
+Browse anime list
+
+Click on any anime to view details
+
+Add anime to favorites ❤️
+
+View your favorites in dashboard
+
+Remove anime anytime
+
+💡 Future Improvements
+
+⭐ Anime rating system
+
+💬 Comments/Reviews
+
+🎥 Trailer integration (YouTube)
+
+🌙 Dark mode
+
+🤖 Anime recommendation system
+
+🌐 API integration (MyAnimeList / Jikan API)
+
+🤝 Contributing
+
+Contributions are welcome! Feel free to fork the repository and submit a pull request.
+
+📜 License
+
+This project is open-source and available.
+
+👨‍💻 Author
+
+Hariendira
+
+👨‍💻 Author
+
+Hari Endira
