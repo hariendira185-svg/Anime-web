@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="detail-container">
+    <div class="detail-header">
+        <div class="detail-image glass-card">
+            <img src="{{ anime.image_url }}" alt="{{ anime.title }}">
+        </div>
+        
+        <div class="detail-info">
+            <div class="title-section">
+                <h1>{{ anime.title }}</h1>
+                <div class="badges">
+                    <span class="badge genre-badge">{{ anime.genre }}</span>
+                    <span class="badge rating-badge"><i class="fa-solid fa-star"></i> {{ anime.rating }} / 10</span>
+                    <span class="badge eps-badge"><i class="fa-solid fa-tv"></i> {{ anime.episodes }} Episodes</span>
+                </div>
+            </div>
+            
+            <div class="description-section glass-card">
+                <h3>Synopsis</h3>
+                <p>{{ anime.description }}</p>
+            </div>
+            
+            <div class="action-section">
+                {% if current_user.is_authenticated %}
+                    {% if is_favorite %}
+                        <form action="{{ url_for('remove_favorite', anime_id=anime.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn-danger btn-lg"><i class="fa-solid fa-heart-crack"></i> Remove from Favorites</button>
+                        </form>
+                    {% else %}
+                        <form action="{{ url_for('add_favorite', anime_id=anime.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn-primary btn-lg"><i class="fa-solid fa-heart"></i> Add to Favorites</button>
+                        </form>
+                    {% endif %}
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn-primary btn-lg"><i class="fa-solid fa-lock"></i> Login to add favorite</a>
+                {% endif %}
+                <a href="{{ url_for('index') }}" class="btn-secondary btn-lg"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

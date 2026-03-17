@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section">
+    <h1>Discover Your Next <span class="highlight">Binge</span></h1>
+    <p>Explore thousands of anime, read descriptions, and save your favorites.</p>
+    
+    <div class="search-container">
+        <form action="{{ url_for('index') }}" method="GET" class="search-form">
+            <div class="search-inputs">
+                <div class="input-group">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="q" placeholder="Search anime by title..." value="{{ request.args.get('q', '') }}">
+                </div>
+                <div class="input-group select-group">
+                    <i class="fa-solid fa-filter"></i>
+                    <select name="genre">
+                        <option value="All">All Genres</option>
+                        {% for genre in genres %}
+                            <option value="{{ genre }}" {% if request.args.get('genre') == genre %}selected{% endif %}>{{ genre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary search-btn">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="anime-grid">
+    {% for anime in animes %}
+    <div class="anime-card" onclick="window.location='{{ url_for('anime_detail', anime_id=anime.id) }}'">
+        <div class="card-image">
+            <img src="{{ anime.image_url }}" alt="{{ anime.title }}">
+            <div class="card-overlay">
+                <span class="rating"><i class="fa-solid fa-star"></i> {{ anime.rating }}</span>
+            </div>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">{{ anime.title }}</h3>
+            <div class="card-meta">
+                <span class="badge genre-badge">{{ anime.genre }}</span>
+                <span class="badge eps-badge"><i class="fa-solid fa-tv"></i> {{ anime.episodes }} Eps</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <i class="fa-solid fa-ghost"></i>
+        <h2>No anime found!</h2>
+        <p>Try adjusting your search or genre filter.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

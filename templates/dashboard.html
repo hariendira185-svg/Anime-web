@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1>Welcome, <span class="highlight">{{ current_user.username }}</span>!</h1>
+    <p>Manage your personal Anime Favorites collection.</p>
+</div>
+
+<div class="dashboard-section">
+    <h2 class="section-title"><i class="fa-solid fa-heart"></i> My Favorites ({{ animes|length }})</h2>
+    
+    <div class="anime-grid">
+        {% for anime in animes %}
+        <div class="anime-card">
+            <div class="card-image" onclick="window.location='{{ url_for('anime_detail', anime_id=anime.id) }}'">
+                <img src="{{ anime.image_url }}" alt="{{ anime.title }}">
+                <div class="card-overlay">
+                    <span class="rating"><i class="fa-solid fa-star"></i> {{ anime.rating }}</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">{{ anime.title }}</h3>
+                <div class="card-actions">
+                    <form action="{{ url_for('remove_favorite', anime_id=anime.id) }}" method="POST">
+                        <button type="submit" class="icon-btn-danger" title="Remove from Favorites">
+                            <i class="fa-solid fa-trash"></i> Remove
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="empty-state glass-card full-width">
+            <i class="fa-solid fa-box-open"></i>
+            <h2>Your favorites list is empty!</h2>
+            <p>Go to the home page to discover new anime.</p>
+            <a href="{{ url_for('index') }}" class="btn-primary mt-3">Browse Anime</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
