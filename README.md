@@ -147,7 +147,7 @@ This project is open-source and available.
 
 👨‍💻 Author
 
-Hariendira
+Hariendira V
 
 
 
