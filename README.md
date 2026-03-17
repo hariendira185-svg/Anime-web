@@ -149,6 +149,5 @@ This project is open-source and available.
 
 Hariendira
 
-👨‍💻 Author
 
 Hari Endira
